@@ -1,0 +1,13 @@
+.user {
+  display: flex;
+  align-items: center;
+  color: var(--second-color);
+  gap: 20px;
+}
+
+.greeting > span {
+  color: var(--second-color);
+}
+.greeting {
+  color: var(--accent-color);
+}
