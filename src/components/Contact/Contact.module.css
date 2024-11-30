@@ -25,15 +25,39 @@
   font-size: 22px;
 }
 .btn {
+  position: relative;
   padding: 4px 6px;
   border: 1px solid var(--accent-color);
   border-radius: 8px;
   cursor: pointer;
   background-color: var(--accent-color);
   color: var(--second-text-color);
-  transition: background-color var(--animation-mode);
+  transition: var(--animation-mode);
   &:focus,
   &:hover {
     background-color: red;
+    border-color: red;
   }
+}
+.tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: red;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0%; /* Позиція підказки */
+  left: 140%;
+
+  opacity: 0;
+  transition: opacity var(--animation-mode);
+}
+
+.btn:hover .tooltiptext,
+.btn:focus .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }

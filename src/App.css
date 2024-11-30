@@ -2,13 +2,13 @@ section {
   width: 100vw;
 
   padding: 20px 0px;
-  background-color: lightgrey;
 }
 .container {
   text-align: center;
   width: 320px;
   padding: 0px 20px;
   margin: 0 auto;
+  background-color: lightgrey;
 }
 .title {
   color: var(--accent-color);

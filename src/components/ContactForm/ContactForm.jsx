@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 
 import { addContact } from "../../redux/contacts/operations";
 import createContactSchema from "../../utils/validationSchema";
+import { CustomTextField } from "../sharedMui";
 
 const initialValues = {
   name: "",
@@ -29,26 +30,31 @@ const ContactForm = () => {
         isNumberRequired: true,
       })}
     >
-      <Form className={s.form}>
-        <label className={s.label} htmlFor={nameFieldId}>
-          Name
-        </label>
-        <Field className={s.field} id={nameFieldId} type="text" name="name" />
-        <ErrorMessage className={s.error} name="name" component="span" />
-        <label className={s.label} htmlFor={numberFieldId}>
-          Number
-        </label>
-        <Field
-          className={s.field}
-          id={numberFieldId}
-          type="tel"
-          name="number"
-        />
-        <ErrorMessage className={s.error} name="number" component="span" />
-        <button className={s.btn} type="submit">
-          Add contact
-        </button>
-      </Form>
+      {({ errors, touched }) => (
+        <Form className={s.form}>
+          <CustomTextField
+            id={nameFieldId}
+            name="name"
+            label="Name"
+            type="name"
+            error={Boolean(errors.name && touched.name)}
+          />
+
+          <label className={s.label} htmlFor={numberFieldId}>
+            Number
+          </label>
+          <Field
+            className={s.field}
+            id={numberFieldId}
+            type="tel"
+            name="number"
+          />
+          <ErrorMessage className={s.error} name="number" component="span" />
+          <button className={s.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      )}
     </Formik>
   );
 };

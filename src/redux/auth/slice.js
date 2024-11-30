@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { login, register } from "./operations";
+import { login, logout, refreshUser, register } from "./operations";
 
 const initialState = {
   user: {
@@ -24,63 +24,33 @@ const slice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        Object.assign(state, initialState);
+      })
+      .addCase(refreshUser.pending, (state) => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, (state) => {
+        state.isRefreshing = false;
       });
-    //   .addCase(fetchRegisterUser.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //
-    //   .addCase(fetchRegisterUser.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.payload;
-    //   })
-
-    //   .addCase(fetchContacts.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(fetchContacts.fulfilled, (state, action) => {
-    //     state.loading = false;
-    //     state.error = null;
-    //     state.items = action.payload;
-    //   })
-    //   .addCase(fetchContacts.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.payload;
-    //   })
-
-    //   .addCase(deleteContact.pending, (state) => {
-    //     state.loading = true;
-    //   })
-    //   .addCase(deleteContact.fulfilled, (state, action) => {
-    //     state.loading = false;
-    //     state.error = null;
-    //     const idx = state.items.findIndex((item) => item.id === action.payload);
-    //     state.items.splice(idx, 1);
-    //   })
-    //   .addCase(deleteContact.rejected, (state, action) => {
-    //     state.loading = false;
-    //     state.error = action.payload;
-    //   });
   },
 });
 export default slice.reducer;
 
-// #2 - {
-//   contacts: {
-//     items: [],
-//     loading: false,
-//     error: null
-//   },
-//   filter: {
-//     name: ''
-//   },
-//   auth: {
-//     user: {
-//       name: 'Joe',
-//       email: 'joe@ukr.net'
-//     },
-//     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzRhM2Q5ZGM0OTVlZDZlMjVmM2E0YzkiLCJpYXQiOjE3MzI5MTg2ODV9.BUQrFauiaYfZfmUTEoIa5d5a1rzigNH96SlXpAgvjtQ',
-//     isLoggedIn: true,
-//     isRefreshing: false
-//   }
-//   Jooe789
-// }
+/* #2
+Joe
+joe @ukr.net
+Jooe789
+*/
+
+/* #3
+John Snow
+snow@ukr.net
+Snow789
+*/

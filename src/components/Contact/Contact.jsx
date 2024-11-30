@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 
 import s from "./Contact.module.css";
+import { MdDeleteForever } from "react-icons/md";
 const Contact = ({ contacts: { id, name, number } }) => {
   const dispatch = useDispatch();
   return (
@@ -20,7 +21,8 @@ const Contact = ({ contacts: { id, name, number } }) => {
         </p>
       </div>
       <button onClick={() => dispatch(deleteContact(id))} className={s.btn}>
-        Delete
+        <span className={s.tooltiptext}>Click to delete contact</span>
+        <MdDeleteForever />
       </button>
     </li>
   );
