@@ -6,7 +6,8 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import LoaderApi from "../../components/LoaderApi/LoaderApi";
 import ContactList from "../../components/ContactList/ContactList";
-
+import { Box } from "@mui/material";
+import s from "./ContactsPage.module.css";
 const ContactsPage = () => {
   const loading = useSelector(selectLoading);
 
@@ -16,12 +17,25 @@ const ContactsPage = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <h1 className="title">Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading ? <LoaderApi /> : <ContactList />}
-    </div>
+    <Box
+      component="section"
+      sx={{
+        width: "100vw",
+        height: "100vh",
+        p: 2,
+        border: "1px dashed grey",
+        backgroundColor: "var(--main--bg-color)",
+      }}
+    >
+      <div className="container">
+        <h1 className={s.title}>
+          Phone<span>book</span>
+        </h1>
+        <ContactForm />
+        <SearchBox />
+        {loading ? <LoaderApi /> : <ContactList />}
+      </div>
+    </Box>
   );
 };
 

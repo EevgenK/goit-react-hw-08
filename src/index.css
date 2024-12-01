@@ -1,17 +1,23 @@
 :root {
+  --main--bg-color: rgb(11, 4, 43);
+  --second--bg-color: rgb(7, 3, 26);
   --main-color: black;
   --second-color: blue;
   --accent-color: darkblue;
-  --second-text-color: white;
+  --second-text-color: #d5f5f4;
+  --input-color: #768b8b;
+  --complete-input-color: #191b1b;
   --animation-mode: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
+  font-family: "roboto", sans-serif;
   font-weight: 400;
   font-size: 24px;
   line-height: 1.23;
   letter-spacing: 0.03em;
 }
+
 h1,
 h2,
 h3,

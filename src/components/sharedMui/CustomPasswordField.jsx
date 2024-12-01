@@ -1,7 +1,6 @@
 import {
   FormControl,
   FormHelperText,
-  Icon,
   IconButton,
   InputAdornment,
   InputLabel,
@@ -11,7 +10,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import { ErrorMessage, Field } from "formik";
 
-const CustomPasswordField = ({ id, error, name, label }) => {
+const CustomPasswordField = ({ id, error, name, label, valid }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -24,18 +23,14 @@ const CustomPasswordField = ({ id, error, name, label }) => {
   return (
     <Field name={name}>
       {({ field }) => (
-        <FormControl error={error} fullWidth sx={{ m: 1 }} variant="outlined">
-          <InputLabel
-            sx={{
-              color: "var(--accent-color)",
-              "&.Mui-focused": {
-                color: "var(--second-color)",
-              },
-            }}
-            htmlFor={id}
-          >
-            {label}
-          </InputLabel>
+        <FormControl
+          color="secondary"
+          error={error}
+          fullWidth
+          sx={{ m: 1 }}
+          variant="outlined"
+        >
+          <InputLabel htmlFor={id}>{label}</InputLabel>
           <OutlinedInput
             {...field}
             id={id}
@@ -49,13 +44,13 @@ const CustomPasswordField = ({ id, error, name, label }) => {
                   onClick={handleClickShowPassword}
                   onMouseDown={handleMouseDownPassword}
                   sx={{
-                    color: "var(--accent-color)",
+                    color: valid ? "green" : "var(--second-text-color)",
                     "&:hover": {
                       color: "var(--second-color)",
                     },
-                    "&.Mui-focused": {
-                      color: "var(--second-color)",
-                    },
+                    // "&.Mui-focused": {
+                    //   color: "var(--second-color)",
+                    // },
                   }}
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -64,9 +59,17 @@ const CustomPasswordField = ({ id, error, name, label }) => {
             }
             label={label}
             sx={{
+              "& .MuiInputBase-input": {
+                color: "var(--second-text-color)",
+              },
+
               "&.MuiOutlinedInput-root": {
+                backgroundColor: valid
+                  ? "var(--complete-input-color)"
+                  : "var(--main-color)",
+
                 "& fieldset": {
-                  borderColor: "var(--accent-color)",
+                  borderColor: "var(--input-color)",
                 },
                 "&:hover fieldset": {
                   borderColor: "var(--second-color)",

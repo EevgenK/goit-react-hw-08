@@ -1,0 +1,9 @@
+.title {
+  font-size: 40px;
+  color: var(--second-color);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.title > span {
+  color: var(--second-text-color);
+}

@@ -1,11 +1,12 @@
-import { Form, Formik, useFormik } from "formik";
+import { Form, Formik } from "formik";
 import { useId } from "react";
 import createContactSchema from "../../utils/validationSchema";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { Button } from "@mui/material";
 import { CustomPasswordField, CustomTextField } from "../sharedMui/index.js";
-import { TextField } from "@mui/material";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
+
 import s from "./LoginForm.module.css";
 const initialValues = {
   email: "",
@@ -25,14 +26,6 @@ const LoginForm = () => {
     );
     actions.resetForm();
   };
-  // const formik = useFormik({
-  //   initialValues,
-  //   validationSchema: createContactSchema({
-  //     isEmailRequired: true,
-  //     isPasswordRequired: true,
-  //   }),
-  //   onSubmit: (values, actions) => handleSubmit(values, actions),
-  // });
 
   return (
     <Formik
@@ -42,8 +35,9 @@ const LoginForm = () => {
         isEmailRequired: true,
         isPasswordRequired: true,
       })}
+      validateOnBlur={false}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values }) => (
         <Form className={s.form}>
           <CustomTextField
             id={emailFieldId}
@@ -51,6 +45,7 @@ const LoginForm = () => {
             label="Email"
             type="email"
             error={Boolean(errors.email && touched.email)}
+            valid={touched.email && !errors.email && values.email}
           />
           <CustomPasswordField
             id={passwordFieldId}
@@ -58,16 +53,14 @@ const LoginForm = () => {
             label="Password"
             type="password"
             error={Boolean(errors.password && touched.password)}
+            valid={touched.email && !errors.email && values.email}
           />
           <Button
+            className={s.button}
+            startIcon={<VpnKeyIcon />}
             type="submit"
             variant="contained"
-            fullWidth
-            sx={{
-              backgroundColor: "var(--accent-color)",
-              color: "white",
-              "&:hover": { backgroundColor: "var(--second-color)" },
-            }}
+            color="secondary"
           >
             Log in
           </Button>

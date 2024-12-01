@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectNameFilter } from "../../redux/filters/selectors";
 import { changeFilter } from "../../redux/filters/slice";
 import s from "./SearchBox.module.css";
+import { TextField } from "@mui/material";
 
 const SearchBox = () => {
   const search = useSelector(selectNameFilter);
@@ -16,12 +17,35 @@ const SearchBox = () => {
   return (
     <label className={s.label} htmlFor={searchFieldId}>
       Find contacts by name or number
-      <input
-        id={searchFieldId}
-        value={search}
-        onChange={handleInput}
+      <TextField
         className={s.search}
-      ></input>
+        id="outlined-search"
+        label="Search field"
+        type="search"
+        color="secondary"
+        onChange={handleInput}
+        slotProps={{
+          inputLabel: {
+            sx: {
+              color: "var(--second-text-color)",
+            },
+          },
+        }}
+        sx={{
+          "& .MuiOutlinedInput-root": {
+            color: "var(--second-text-color)",
+            "& fieldset": {
+              borderColor: "var(--input-color)",
+            },
+            "&:hover fieldset": {
+              borderColor: "var(--second-color)",
+            },
+            "&.Mui-focused fieldset": {
+              borderColor: "var(--second-color)",
+            },
+          },
+        }}
+      />
     </label>
   );
 };

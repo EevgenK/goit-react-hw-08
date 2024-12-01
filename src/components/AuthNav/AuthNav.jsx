@@ -6,7 +6,7 @@ const AuthNav = () => {
     <ul className={s.navigation}>
       <li>
         <NavLink className={s.link} to="/register">
-          sig in
+          register
         </NavLink>
       </li>
       <li>

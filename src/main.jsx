@@ -11,14 +11,16 @@ import { persistor, store } from "./redux/store.js";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import CustomMuiColors from "./components/sharedMui/CustomMuiColors.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
-
+          <CustomMuiColors>
+            <App />
+          </CustomMuiColors>
           <Toaster
             position="top-center"
             reverseOrder={false}

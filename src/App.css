@@ -8,12 +8,8 @@ section {
   width: 320px;
   padding: 0px 20px;
   margin: 0 auto;
-  background-color: lightgrey;
 }
-.title {
-  color: var(--accent-color);
-  margin-bottom: 10px;
-}
+
 @media (min-width: 360px) {
   .container {
     width: 360px;

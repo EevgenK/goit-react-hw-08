@@ -1,44 +1,59 @@
-import { TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import { Field, ErrorMessage } from "formik";
+import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 
-const CustomTextField = ({ id, error, name, label, type }) => {
+const CustomTextField = ({ id, error, name, label, type, valid }) => {
   return (
     <Field
+      color="secondary"
       error={error}
       id={id}
       type={type}
       name={name}
+      label={label}
       as={TextField}
       fullWidth
-      label={label}
       variant="outlined"
       margin="normal"
       helperText={<ErrorMessage name={name} component="span" />}
-      InputLabelProps={{
-        sx: {
-          color: "var(--accent-color)",
-          "&.Mui-focused": {
-            color: "var(--second-color)",
+      slotProps={{
+        input: {
+          endAdornment: (
+            <InputAdornment position="end">
+              {valid && <CheckRoundedIcon color="success" />}
+            </InputAdornment>
+          ),
+        },
+        // htmlInput: CustomHtmlInputProps,
+        // select: CustomSelectProps,
+        inputLabel: {
+          sx: {
+            color: "var(--second-text-color)",
+            // "&.Mui-focused": {
+            //   color: "var(--second-color)",
+            // },
+          },
+        },
+        formHelperText: {
+          sx: {
+            color: "red",
           },
         },
       }}
-      FormHelperTextProps={{
-        sx: {
-          color: "red",
-        },
-      }}
-      InputProps={{
-        sx: {
-          "&.MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "var(--accent-color)",
-            },
-            "&:hover fieldset": {
-              borderColor: "var(--second-color)",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "var(--second-color)",
-            },
+      sx={{
+        "& .MuiOutlinedInput-root": {
+          backgroundColor: valid
+            ? "var(--complete-input-color)"
+            : "var(--main-color)",
+          color: "var(--second-text-color)",
+          "& fieldset": {
+            borderColor: "var(--input-color)",
+          },
+          "&:hover fieldset": {
+            borderColor: "var(--second-color)",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "var(--second-color)",
           },
         },
       }}

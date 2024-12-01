@@ -1,16 +1,16 @@
 .search {
-  padding: 8px;
   width: 100%;
-  border: 1px solid var(--accent-color);
+
   border-radius: 8px;
   margin-bottom: 10px;
+  background-color: var(--main-color);
 }
 .label {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
-  color: var(--accent-color);
+  color: var(--second-text-color);
 }
 @media (min-width: 768px) {
   .search {

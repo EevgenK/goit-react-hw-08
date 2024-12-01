@@ -1,9 +1,9 @@
-import { Field, Form, Formik, ErrorMessage } from "formik";
-
+import { Form, Formik } from "formik";
+import AddReactionIcon from "@mui/icons-material/AddReaction";
 import { useId } from "react";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-
+import { Button } from "@mui/material";
 import { addContact } from "../../redux/contacts/operations";
 import createContactSchema from "../../utils/validationSchema";
 import { CustomTextField } from "../sharedMui";
@@ -29,30 +29,36 @@ const ContactForm = () => {
         isNameRequired: true,
         isNumberRequired: true,
       })}
+      validateOnBlur={false}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, values }) => (
         <Form className={s.form}>
           <CustomTextField
             id={nameFieldId}
             name="name"
-            label="Name"
+            label="Enter new name"
             type="name"
             error={Boolean(errors.name && touched.name)}
+            valid={touched.email && !errors.email && values.email}
           />
 
-          <label className={s.label} htmlFor={numberFieldId}>
-            Number
-          </label>
-          <Field
-            className={s.field}
+          <CustomTextField
             id={numberFieldId}
-            type="tel"
             name="number"
+            label="Enter new number"
+            type="tel"
+            error={Boolean(errors.name && touched.name)}
+            valid={touched.email && !errors.email && values.email}
           />
-          <ErrorMessage className={s.error} name="number" component="span" />
-          <button className={s.btn} type="submit">
+          <Button
+            className={s.button}
+            startIcon={<AddReactionIcon fontSize="large" />}
+            type="submit"
+            variant="outlined"
+            color="secondary"
+          >
             Add contact
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>

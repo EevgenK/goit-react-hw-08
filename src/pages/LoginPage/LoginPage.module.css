@@ -1,0 +1,12 @@
+.invite {
+  color: var(--second-text-color);
+  padding-bottom: 20px;
+}
+.link {
+  text-decoration: none;
+  color: var(--second-color);
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
