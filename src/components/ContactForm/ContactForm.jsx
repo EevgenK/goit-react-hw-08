@@ -4,26 +4,35 @@ import { useId } from "react";
 import s from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
-import { addContact } from "../../redux/contacts/operations";
+import { addContact, editContact } from "../../redux/contacts/operations";
 import createContactSchema from "../../utils/validationSchema";
 import { CustomTextField } from "../sharedMui";
+import { isObjectsChanged } from "../../utils/checkObjects";
+import { closeModal } from "../../redux/modal/slice";
 
 const initialValues = {
   name: "",
   number: "",
 };
-const ContactForm = () => {
+const ContactForm = ({ type, change }) => {
   const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
   const handleSubmit = ({ name, number }, actions) => {
+    if (type === "edit") {
+      const editData = { ...change, name, number };
+      console.log("editData-", editData);
+      dispatch(editContact(editData));
+      dispatch(closeModal());
+      return;
+    }
     dispatch(addContact({ name, number }));
 
     actions.resetForm();
   };
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={change ?? initialValues}
       onSubmit={handleSubmit}
       validationSchema={createContactSchema({
         isNameRequired: true,
@@ -31,24 +40,24 @@ const ContactForm = () => {
       })}
       validateOnBlur={false}
     >
-      {({ errors, touched, values }) => (
+      {({ errors, touched, values, initialValues }) => (
         <Form className={s.form}>
           <CustomTextField
             id={nameFieldId}
             name="name"
-            label="Enter new name"
+            label={change ? "Edit name" : "Enter new name"}
             type="name"
             error={Boolean(errors.name && touched.name)}
-            valid={touched.email && !errors.email && values.email}
+            valid={touched.name && !errors.name && values.name}
           />
 
           <CustomTextField
             id={numberFieldId}
             name="number"
-            label="Enter new number"
+            label={change ? "Edit number" : "Enter new number"}
             type="tel"
             error={Boolean(errors.name && touched.name)}
-            valid={touched.email && !errors.email && values.email}
+            valid={touched.number && !errors.number && values.number}
           />
           <Button
             className={s.button}
@@ -56,8 +65,9 @@ const ContactForm = () => {
             type="submit"
             variant="outlined"
             color="secondary"
+            disabled={change ? isObjectsChanged(initialValues, values) : false}
           >
-            Add contact
+            {type === "edit" ? "Edit contact" : "Add contact"}
           </Button>
         </Form>
       )}

@@ -1,10 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addContact, deleteContact, fetchContacts } from "./operations";
+import {
+  addContact,
+  deleteContact,
+  editContact,
+  fetchContacts,
+} from "./operations";
 
 const initialState = {
   items: [],
   loading: false,
   error: null,
+  currentItem: null,
 };
 const slice = createSlice({
   name: "contacts",
@@ -47,7 +53,18 @@ const slice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        const idx = state.items.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        state.items.splice(idx, 1, action.payload);
       });
+  },
+  reducers: {
+    setCurrentItem: (state, action) => {
+      state.currentItem = action.payload;
+    },
   },
 });
 
@@ -75,15 +92,16 @@ const slice = createSlice({
 
 // ACTIONS
 export const {
-  fetchError,
-  fetchInProgress,
-  fetchSuccess,
-  fetchAddInProgress,
-  fetchAddSuccess,
-  fetchAddError,
-  fetchDeleteInProgress,
-  fetchDeleteSuccess,
-  fetchDeleteError,
+  // fetchError,
+  // fetchInProgress,
+  // fetchSuccess,
+  // fetchAddInProgress,
+  // fetchAddSuccess,
+  // fetchAddError,
+  // fetchDeleteInProgress,
+  // fetchDeleteSuccess,
+  // fetchDeleteError,
+  setCurrentItem,
 } = slice.actions;
 // REDUCER
 export default slice.reducer;

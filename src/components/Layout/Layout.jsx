@@ -1,19 +1,20 @@
-import { useState } from "react";
 import AppBar from "../AppBar/AppBar";
 import Modal from "../Modal/Modal";
-import AuthNav from "../AuthNav/AuthNav";
+
+import ChangeCard from "../ChangeCard/ChangeCard";
+import { useSelector } from "react-redux";
+import { selectModal } from "../../redux/modal/selectors";
 
 const Layout = ({ children }) => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const modalOpen = useSelector(selectModal);
+
   return (
     <>
-      <AppBar openModal={() => setModalOpen(true)} />
+      <AppBar />
       <section>{children}</section>
       {modalOpen && (
-        <Modal close={() => setModalOpen(false)}>
-          <div className="decor">
-            <AuthNav />
-          </div>
+        <Modal>
+          <ChangeCard />
         </Modal>
       )}
     </>
@@ -21,3 +22,4 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
+/*close={() => setModalOpen(false)*/

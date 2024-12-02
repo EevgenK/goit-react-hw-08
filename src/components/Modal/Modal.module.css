@@ -7,15 +7,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--main-color);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 1200;
 }
 
 .modal {
-  background-color: white;
+  background-color: var(--main--bg-color);
   max-width: calc(100vw - 48px);
   max-height: calc(100vh - 24px);
   display: flex;
   flex-direction: column;
   gap: 150px;
+  border: 5px solid var(--second-text-color);
+  border-radius: 8px;
 }

@@ -5,13 +5,16 @@ import { deleteContact } from "../../redux/contacts/operations";
 
 import s from "./Contact.module.css";
 import { MdDeleteForever } from "react-icons/md";
+import { setCurrentItem } from "../../redux/contacts/slice";
+import { openModal } from "../../redux/modal/slice";
 const Contact = ({ contacts: { id, name, number } }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
     dispatch(deleteContact(id));
   };
-  const handleEdit = (e) => {
-    console.log(id);
+  const handleEdit = () => {
+    dispatch(setCurrentItem({ id, name, number }));
+    dispatch(openModal());
   };
   return (
     <li className={s.item}>

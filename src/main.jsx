@@ -25,24 +25,13 @@ createRoot(document.getElementById("root")).render(
             position="top-center"
             reverseOrder={false}
             toastOptions={{
-              // Define default options
-              className: "",
               duration: 4000,
               style: {
-                background: "grey",
-                color: "#fff",
-                border: "3px solid red",
-              },
-
-              // Default options for specific types
-              error: {
-                theme: {
-                  primary: "red",
-                  secondary: "black",
-                },
-              },
-              success: {
-                border: "3px solid green",
+                minWidth: "290px",
+                padding: "10px",
+                border: "3px solid var(--second-text-color)",
+                background: "black",
+                color: "var(--second-text-color)",
               },
             }}
           />
