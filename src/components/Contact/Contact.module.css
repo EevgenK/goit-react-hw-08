@@ -6,6 +6,7 @@
   border: 1px solid var(--accent-color);
   border-radius: 8px;
   padding: 6px 8px;
+  background-color: var(--second-text-color);
 }
 .card {
   display: flex;
@@ -24,7 +25,12 @@
   align-items: center;
   font-size: 22px;
 }
-.btn {
+.buttons {
+  display: flex;
+  gap: 6px;
+}
+.delete,
+.edit {
   position: relative;
   padding: 4px 6px;
   border: 1px solid var(--accent-color);
@@ -33,31 +39,37 @@
   background-color: var(--accent-color);
   color: var(--second-text-color);
   transition: var(--animation-mode);
-  &:focus,
-  &:hover {
-    background-color: red;
-    border-color: red;
-  }
+}
+.delete:focus,
+.delete:hover {
+  background-color: red;
+  border-color: red;
+}
+.edit:focus,
+.edit:hover {
+  background-color: rgb(3, 73, 3);
+  border-color: rgb(3, 73, 3);
 }
 .tooltiptext {
+  font-size: 16px;
   visibility: hidden;
   width: 200px;
-  background-color: red;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--second-text-color);
   text-align: center;
   border-radius: 8px;
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 0%; /* Позиція підказки */
-  left: 140%;
+  bottom: 140%; /* Позиція підказки */
+  left: 0%;
 
   opacity: 0;
   transition: opacity var(--animation-mode);
 }
 
-.btn:hover .tooltiptext,
-.btn:focus .tooltiptext {
+button:hover .tooltiptext,
+button:focus .tooltiptext {
   visibility: visible;
   opacity: 1;
 }

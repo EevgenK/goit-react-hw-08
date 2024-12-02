@@ -1,41 +1,18 @@
 import { useSelector } from "react-redux";
 import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import UserMenu from "../UserMenu/UserMenu";
 import s from "./AppBar.module.css";
 import authSelectors from "../../redux/auth/selectors";
-import { Box, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import clsx from "clsx";
 
 const AppBar = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+
   return (
-    // <header>
-    //   <Box sx={{ flexGrow: 1 }}>
-    //     <AppBar position="static">
-    //       <Toolbar>
-    //         <IconButton
-    //           size="large"
-    //           edge="start"
-    //           color="inherit"
-    //           aria-label="menu"
-    //           sx={{ mr: 2 }}
-    //         >
-    //           <MenuIcon />
-    //         </IconButton>
-    //         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-    //           <nav className={s.header}>
-    //             <Navigation />
-    //             {isLoggedIn ? <UserMenu /> : <AuthNav />}
-    //           </nav>
-    //         </Typography>
-    //         <Button color="inherit">Login</Button>
-    //       </Toolbar>
-    //     </AppBar>
-    //   </Box>
-    // </header>
-    <header>
-      <nav className={s.header}>
+    <header className={s.header}>
+      <nav className={clsx("container", s.navigation)}>
         <Navigation />
         {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </nav>
@@ -44,3 +21,66 @@ const AppBar = () => {
 };
 
 export default AppBar;
+/*
+<Box sx={{ flexGrow: 1 }}>
+  <FormGroup>
+    <FormControlLabel
+      control={
+        <Switch
+          checked={auth}
+          onChange={handleChange}
+          aria-label="login switch"
+        />
+      }
+      label={auth ? "Logout" : "Login"}
+    />
+  </FormGroup>
+  <AppBar position="static">
+    <Toolbar>
+      <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        sx={{ mr: 2 }}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        Photos
+      </Typography>
+      {auth && (
+        <div>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>My account</MenuItem>
+          </Menu>
+        </div>
+      )}
+    </Toolbar>
+  </AppBar>
+</Box>*/

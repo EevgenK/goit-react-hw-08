@@ -21,6 +21,10 @@ export const addContact = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const result = await axios.post("/contacts", data);
+      console.log(data);
+      toast.success(
+        `${data.name} with phone number ${data.number} was successfully added to Phone Book!`
+      );
       return result.data;
     } catch (response) {
       return rejectWithValue(response.message);
@@ -45,7 +49,22 @@ export const deleteContact = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       await axios.delete(`/contacts/${id}`);
+      toast.success(`Contact was successfully deleted!`);
       return id;
+    } catch (response) {
+      return rejectWithValue(response.message);
+    }
+  }
+);
+
+export const editContact = createAsyncThunk(
+  "contacts/editContact",
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await axios.patch(`/contacts/${data.id}`, data);
+      console.log(data);
+
+      return result.data;
     } catch (response) {
       return rejectWithValue(response.message);
     }

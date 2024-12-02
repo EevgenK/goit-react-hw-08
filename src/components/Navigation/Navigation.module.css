@@ -2,23 +2,22 @@
   display: flex;
   text-transform: uppercase;
   gap: 10px;
+  align-items: flex-end;
 }
 .link {
   display: flex;
-  gap: 10px;
   align-items: center;
   text-decoration: none;
-  color: var(--accent-color);
-  background-color: var(--background-accent);
-  border: 1px solid var(--background-accent);
-  padding: 8px 10px;
-  border-radius: 8px;
+  color: inherit;
+  gap: 2px;
+  padding: 4px 6px;
+
   transition: var(--animation-mode);
   &:hover,
   &:focus {
-    border: 1px solid var(--second-color);
+    border-bottom: 1px solid var(--second-color);
   }
 }
 .link:global(.active) {
-  border: 1px solid var(--second-color);
+  border-bottom: 1px solid var(--second-color);
 }

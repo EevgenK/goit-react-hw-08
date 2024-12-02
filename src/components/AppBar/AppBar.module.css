@@ -1,5 +1,23 @@
 .header {
+  padding: 10px 0px;
+  background-color: var(--main-color);
+  border-bottom: 1px solid var(--second-text-color);
+  color: var(--second-text-color);
+}
+.navigation {
+  font-size: 14px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+.reverse {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  .navigation {
+    font-size: 24px;
+  }
 }

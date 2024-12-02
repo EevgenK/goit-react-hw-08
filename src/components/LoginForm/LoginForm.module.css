@@ -10,7 +10,8 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  width: 300px;
+  min-width: 240px;
+  max-width: 300px;
   border-radius: 8px;
   transition: var(--animation-mode);
   &:hover {

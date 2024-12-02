@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
 import { useSelector } from "react-redux";
 import authSelectors from "../../redux/auth/selectors";
+import CabinIcon from "@mui/icons-material/Cabin";
 
 const Navigation = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -9,7 +10,7 @@ const Navigation = () => {
     <ul className={s.navigation}>
       <li>
         <NavLink className={s.link} to="/">
-          home page
+          <CabinIcon fontSize="large" color="secondary" />
         </NavLink>
       </li>
       <li>

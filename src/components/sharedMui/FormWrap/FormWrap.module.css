@@ -2,12 +2,15 @@
   text-align: center;
   padding: 20px;
   margin: 0 auto;
-  width: 50vh;
+
   background-color: red;
   border-radius: 8px;
   border: 1px solid #d5f5f4;
   box-shadow: 10px 10px 16px 0px;
   background-color: var(--second--bg-color);
+  @media (min-width: 1280px) {
+    width: 50vh;
+  }
 }
 .wrap {
   display: flex;

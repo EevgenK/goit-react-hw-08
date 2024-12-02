@@ -1,0 +1,14 @@
+.burgerBtn {
+  position: relative;
+  padding: 0;
+  width: 41px;
+  height: 41px;
+  border: 1px solid #4e4c47;
+  border-radius: 8px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.svg {
+  color: var(--second-text-color);
+}
