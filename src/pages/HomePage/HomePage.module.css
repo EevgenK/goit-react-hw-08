@@ -1,0 +1,84 @@
+.back {
+  background: radial-gradient(
+        farthest-side at -33.33% 50%,
+        #0000 52%,
+        #d5f5f4 54% 57%,
+        #0000 59%
+      )
+      0 calc(88px / 2),
+    radial-gradient(
+        farthest-side at 50% 133.33%,
+        #0000 52%,
+        #d5f5f4 54% 57%,
+        #0000 59%
+      )
+      calc(88px / 2) 0,
+    radial-gradient(
+      farthest-side at 133.33% 50%,
+      #0000 52%,
+      #d5f5f4 54% 57%,
+      #0000 59%
+    ),
+    radial-gradient(
+      farthest-side at 50% -33.33%,
+      #0000 52%,
+      #d5f5f4 54% 57%,
+      #0000 59%
+    ),
+    #0b042b;
+  background-size: calc(88px / 4.667) 88px, 88px calc(88px / 4.667);
+}
+.home {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.76;
+  background-color: var(--main--bg-color);
+  color: var(--second-text-color);
+  border: dashed var(--second-color);
+  border-radius: 8px;
+}
+.title {
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.introduce {
+  padding: 30px;
+  text-align: left;
+}
+.benefits {
+  font-size: 28px;
+}
+.item {
+  padding: 6px 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border: thick double var(--second-text-color);
+  border-radius: 8px;
+  background-color: var(--input-color);
+}
+.item > p {
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  width: 90%;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.link {
+  text-decoration: none;
+  color: var(--second-color);
+  transition: var(--animation-mode);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}

@@ -25,6 +25,14 @@
   align-items: center;
   font-size: 22px;
 }
+.link {
+  text-decoration: none;
+  transition: scale var(--animation-mode);
+  &:hover,
+  &:focus {
+    scale: 1.05;
+  }
+}
 .buttons {
   display: flex;
   gap: 6px;

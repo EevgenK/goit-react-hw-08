@@ -23,11 +23,13 @@ const Contact = ({ contacts: { id, name, number } }) => {
           <FaUser className={s.icon} />
           {name}
         </p>
+        <a className={s.link} href={`tel:${number}`}>
+          <p className={s.number}>
+            <BsFillTelephoneFill className={s.icon} />
 
-        <p className={s.number}>
-          <BsFillTelephoneFill className={s.icon} />
-          {number}
-        </p>
+            {number}
+          </p>
+        </a>
       </div>
       <div className={s.buttons}>
         <button className={s.edit} type="button" onClick={handleEdit}>
