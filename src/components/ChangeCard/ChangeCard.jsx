@@ -4,12 +4,17 @@ import s from "./ChangeCard.module.css";
 import { selectCurrentItem } from "../../redux/contacts/selectors";
 import { Button } from "@mui/material";
 import { closeModal } from "../../redux/modal/slice";
-import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
+import { refreshCurrentItem } from "../../redux/contacts/slice";
+
 import CancelIcon from "@mui/icons-material/Cancel";
 
 const ChangeCard = () => {
   const changeItem = useSelector(selectCurrentItem);
   const dispatch = useDispatch();
+  const onHandleClose = () => {
+    dispatch(refreshCurrentItem());
+    dispatch(closeModal());
+  };
 
   return (
     <div className={s.change}>
@@ -21,7 +26,7 @@ const ChangeCard = () => {
         type="submit"
         variant="outlined"
         color="secondary"
-        onClick={() => dispatch(closeModal())}
+        onClick={onHandleClose}
       >
         change mind
       </Button>

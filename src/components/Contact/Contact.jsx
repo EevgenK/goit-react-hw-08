@@ -1,7 +1,6 @@
 import { FaEdit, FaUser } from "react-icons/fa";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
 
 import s from "./Contact.module.css";
 import { MdDeleteForever } from "react-icons/md";
@@ -10,10 +9,11 @@ import { openModal } from "../../redux/modal/slice";
 const Contact = ({ contacts: { id, name, number } }) => {
   const dispatch = useDispatch();
   const handleDelete = () => {
-    dispatch(deleteContact(id));
+    dispatch(setCurrentItem({ type: "delete", id, name, number }));
+    dispatch(openModal());
   };
   const handleEdit = () => {
-    dispatch(setCurrentItem({ id, name, number }));
+    dispatch(setCurrentItem({ type: "edit", id, name, number }));
     dispatch(openModal());
   };
   return (

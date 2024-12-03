@@ -5,6 +5,7 @@ import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 const CustomTextField = ({ id, error, name, label, type, valid }) => {
   return (
     <Field
+      autoComplete="off"
       color="secondary"
       error={error}
       id={id}

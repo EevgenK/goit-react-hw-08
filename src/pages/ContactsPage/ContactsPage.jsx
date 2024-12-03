@@ -29,7 +29,7 @@ const ContactsPage = () => {
     >
       <div className="container">
         <h1 className={s.title}>
-          Phone<span>book</span>
+          Phone<span> book</span>
         </h1>
         <ContactForm />
         <SearchBox />

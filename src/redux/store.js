@@ -14,14 +14,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import persistReducer from "redux-persist/es/persistReducer";
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       ignoredPaths: ["register"],
-//     },
-//   }),
-// ];
+
 const authPersistConfig = {
   key: "auth",
   storage,

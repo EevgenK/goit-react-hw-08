@@ -1,5 +1,5 @@
 export const benefits = [
-  "organizing contacts",
+  "organizing sorted contacts",
   "adding & deleting & editing contacts",
   "preventing creating duplicated names & numbers",
   "using convenient filter for searching a contact by name or number",

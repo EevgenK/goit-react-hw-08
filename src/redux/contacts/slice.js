@@ -65,6 +65,9 @@ const slice = createSlice({
     setCurrentItem: (state, action) => {
       state.currentItem = action.payload;
     },
+    refreshCurrentItem: (state) => {
+      state.currentItem = null;
+    },
   },
 });
 
@@ -102,6 +105,7 @@ export const {
   // fetchDeleteSuccess,
   // fetchDeleteError,
   setCurrentItem,
+  refreshCurrentItem,
 } = slice.actions;
 // REDUCER
 export default slice.reducer;
