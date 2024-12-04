@@ -21,7 +21,6 @@ const ContactForm = ({ type, change }) => {
   const handleSubmit = ({ name, number }, actions) => {
     if (type === "edit") {
       const editData = { ...change, name, number };
-      console.log("editData-", editData);
       dispatch(editContact(editData));
       dispatch(closeModal());
       return;

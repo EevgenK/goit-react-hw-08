@@ -23,20 +23,20 @@ const HomePage = () => {
         <div className={s.introduce}>
           <h1 className={s.title}>Phone book organizer</h1>
           <p>
-            This is an organizer for phone numbers. Access for only registered
-            customers. So visit the{" "}
+            This is an organizer for phone numbers with access for only
+            registered customers. So visit the{" "}
             <Link className={s.link} to="/register">
               {" "}
               Register page
             </Link>{" "}
-            first. And get all functions provided by the application.
+            first. And get all functions and benefits provided by this app.
           </p>
           <BenefitsList title="This application provides:" items={benefits} />
           <p>
             In the nearest future this app is expected to provide more
             functions. <FaSmileWink />
           </p>
-          <p>Enjoy by using this app and have a nice day! </p>
+          <p>Enjoy by using the app and have a nice day! </p>
         </div>
       </div>
     </Box>

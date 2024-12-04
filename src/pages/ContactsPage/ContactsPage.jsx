@@ -13,10 +13,9 @@ const ContactsPage = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("effect");
     dispatch(fetchContacts());
   }, [dispatch]);
-  console.log("render");
+
   return (
     <Box
       component="section"

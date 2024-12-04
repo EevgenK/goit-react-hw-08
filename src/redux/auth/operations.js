@@ -47,7 +47,7 @@ export const login = createAsyncThunk(
       return result.data;
     } catch (response) {
       toast.error(
-        `${response.message}. Check your email and password please. `
+        `${response.message}. Check your email and password please. Or try to register firstly😉.`
       );
       return rejectWithValue(response.message);
     }

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import LoginForm from "../../components/LoginForm/LoginForm";
 import s from "./LoginPage.module.css";
-import LoginIcon from "@mui/icons-material/Login";
+
 import { Link } from "react-router-dom";
 import FormWrap from "../../components/sharedMui/FormWrap/FormWrap";
 

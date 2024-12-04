@@ -1,5 +1,4 @@
 import s from "./Footer.module.css";
-import { IoArrowUpCircle } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import CabinIcon from "@mui/icons-material/Cabin";
 import clsx from "clsx";

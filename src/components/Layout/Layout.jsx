@@ -8,7 +8,7 @@ import { selectCurrentItem } from "../../redux/contacts/selectors";
 
 import Confirm from "../ConfirmDelete/ConfirmDelete";
 import { useCallback, useEffect, useState } from "react";
-import s from "./Layout.module.css";
+
 import ArrowButton from "../ArrowButton/ArrowButton";
 
 const Layout = ({ children }) => {
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <AppBar />
-      <section>{children}</section>
+      {children}
       <Footer />
       <ArrowButton />
       {modalOpen && <Modal>{modalContent}</Modal>}

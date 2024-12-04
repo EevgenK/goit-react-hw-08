@@ -43,15 +43,3 @@ const slice = createSlice({
   },
 });
 export default slice.reducer;
-
-/* #2
-Joe
-joe @ukr.net
-Jooe789
-*/
-
-/* #3
-John Snow
-snow@ukr.net
-Snow789
-*/
