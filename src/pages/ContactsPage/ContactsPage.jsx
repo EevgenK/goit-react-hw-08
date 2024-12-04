@@ -22,10 +22,8 @@ const ContactsPage = () => {
       component="section"
       sx={{
         width: "100vw",
-        height: "100vh",
-
+        height: "100%",
         p: 2,
-
         backgroundColor: "var(--main--bg-color)",
       }}
     >
