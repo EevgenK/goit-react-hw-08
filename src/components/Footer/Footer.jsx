@@ -14,9 +14,6 @@ const Footer = () => {
         <p className={s.author}>
           &copy; PHONE BOOK made by Kulbachenko Evgen on REACT
         </p>
-        <a className={s.up} href="#">
-          <IoArrowUpCircle className={s.icon} />
-        </a>
       </div>
     </footer>
   );

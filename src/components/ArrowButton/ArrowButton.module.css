@@ -1,0 +1,24 @@
+.up {
+  text-transform: uppercase;
+  width: fit-content;
+  text-decoration: none;
+  cursor: pointer;
+}
+.up > a {
+  width: 100%;
+}
+
+.icon {
+  position: fixed;
+  right: 50px;
+  bottom: 100px;
+  /* transform: translate(-10%, -6%); */
+  font-size: 50px;
+
+  color: var(--accent-color);
+  fill: var(--main-color);
+  transition: fill var(--animation-mode);
+}
+.up:hover .icon {
+  fill: var(--second-color);
+}

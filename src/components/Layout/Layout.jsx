@@ -5,8 +5,11 @@ import { useSelector } from "react-redux";
 import { selectModal } from "../../redux/modal/selectors";
 import Footer from "../Footer/Footer";
 import { selectCurrentItem } from "../../redux/contacts/selectors";
+
 import Confirm from "../ConfirmDelete/ConfirmDelete";
 import { useCallback, useEffect, useState } from "react";
+import s from "./Layout.module.css";
+import ArrowButton from "../ArrowButton/ArrowButton";
 
 const Layout = ({ children }) => {
   const modalOpen = useSelector(selectModal);
@@ -38,6 +41,7 @@ const Layout = ({ children }) => {
       <AppBar />
       <section>{children}</section>
       <Footer />
+      <ArrowButton />
       {modalOpen && <Modal>{modalContent}</Modal>}
     </>
   );
