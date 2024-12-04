@@ -22,6 +22,7 @@ const ContactsPage = () => {
       component="section"
       sx={{
         width: "100vw",
+        height: "100vh",
 
         p: 2,
 
