@@ -13,7 +13,7 @@ const HomePage = () => {
       component="section"
       sx={{
         width: "100vw",
-        height: "100%",
+        // height: "100%",
         p: 2,
         border: "1px dashed grey",
         backgroundColor: "var(--main--bg-color)",

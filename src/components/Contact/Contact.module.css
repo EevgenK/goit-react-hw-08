@@ -69,9 +69,9 @@
   padding: 5px;
   position: absolute;
   z-index: 1;
-  bottom: 140%; /* Позиція підказки */
-  left: 0%;
-
+  bottom: 140%;
+  left: -200%;
+  display: none;
   opacity: 0;
   transition: opacity var(--animation-mode);
 }
@@ -79,5 +79,6 @@
 button:hover .tooltiptext,
 button:focus .tooltiptext {
   visibility: visible;
+  display: block;
   opacity: 1;
 }

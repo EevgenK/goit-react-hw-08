@@ -27,7 +27,6 @@
     ),
     #0b042b;
   background-size: calc(88px / 4.667) 88px, 88px calc(88px / 4.667);
-  height: 100%;
 }
 .home {
   font-weight: 400;
