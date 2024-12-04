@@ -17,7 +17,6 @@ const LoginForm = () => {
   const passwordFieldId = useId();
   const dispatch = useDispatch();
   const handleSubmit = ({ email, password }, actions) => {
-    console.log(email, password);
     dispatch(
       login({
         email,

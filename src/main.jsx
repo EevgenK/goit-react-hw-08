@@ -14,29 +14,33 @@ import { PersistGate } from "redux-persist/integration/react";
 import CustomMuiColors from "./components/sharedMui/CustomMuiColors.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <CustomMuiColors>
-            <App />
-          </CustomMuiColors>
-          <Toaster
-            position="top-center"
-            reverseOrder={false}
-            toastOptions={{
-              duration: 4000,
-              style: {
-                minWidth: "290px",
-                padding: "10px",
-                border: "3px solid var(--second-text-color)",
-                background: "black",
-                color: "var(--second-text-color)",
-              },
-            }}
-          />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <CustomMuiColors>
+          <App />
+        </CustomMuiColors>
+        <Toaster
+          containerStyle={{
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%,-50%)",
+          }}
+          reverseOrder={false}
+          toastOptions={{
+            duration: 4000,
+            style: {
+              minWidth: "290px",
+              padding: "10px",
+              border: "3px solid var(--second-text-color)",
+              background: "black",
+              color: "var(--second-text-color)",
+            },
+          }}
+        />
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
+  // </StrictMode>
 );
