@@ -46,8 +46,8 @@ const RegistrationForm = () => {
             name="name"
             label="Name"
             type="text"
-            error={Boolean(errors.email && touched.email)}
-            valid={touched.email && !errors.email && values.email}
+            error={Boolean(errors.name && touched.name)}
+            valid={touched.name && !errors.name && values.name}
           />
 
           <CustomTextField
@@ -65,7 +65,7 @@ const RegistrationForm = () => {
             label="Password"
             type="password"
             error={Boolean(errors.password && touched.password)}
-            valid={touched.email && !errors.email && values.email}
+            valid={touched.password && !errors.password && values.password}
           />
 
           <Button

@@ -21,7 +21,7 @@ const CustomPasswordField = ({ id, error, name, label, valid }) => {
   };
 
   return (
-    <Field name={name}>
+    <Field name={name} color="secondary">
       {({ field }) => (
         <FormControl
           color="secondary"
@@ -30,7 +30,14 @@ const CustomPasswordField = ({ id, error, name, label, valid }) => {
           sx={{ m: 1 }}
           variant="outlined"
         >
-          <InputLabel htmlFor={id}>{label}</InputLabel>
+          <InputLabel
+            htmlFor={id}
+            sx={{
+              color: "var(--second-text-color)",
+            }}
+          >
+            {label}
+          </InputLabel>
           <OutlinedInput
             {...field}
             id={id}
