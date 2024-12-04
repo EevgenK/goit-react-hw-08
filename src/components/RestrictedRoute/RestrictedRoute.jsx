@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import authSelectors from "../../redux/auth/selectors";
 
 const RestrictedRoute = ({ component: Component, redirectTo = "/" }) => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.selectLoggedIn);
 
   return isLoggedIn ? <Navigate to={redirectTo} /> : Component;
 };

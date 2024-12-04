@@ -30,13 +30,14 @@ createRoot(document.getElementById("root")).render(
           }}
           reverseOrder={false}
           toastOptions={{
-            duration: 4000,
+            duration: 5000,
             style: {
               minWidth: "290px",
               padding: "10px",
               border: "3px solid var(--second-text-color)",
               background: "black",
               color: "var(--second-text-color)",
+              fontSize: "18px",
             },
           }}
         />

@@ -76,7 +76,7 @@ const slice = createSlice({
 // export const selectLoading = (state) => state.contacts.loading;
 // export const selectError = (state) => state.contacts.error;
 
-// export const selectFilteredContacts = createSelector(
+// export const selectFilteredContactsMemo = createSelector(
 //   [selectContacts, selectNameFilter],
 //   (contacts, search) => {
 //     const items = !search

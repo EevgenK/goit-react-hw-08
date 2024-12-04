@@ -7,7 +7,7 @@ import authSelectors from "../../redux/auth/selectors";
 import clsx from "clsx";
 
 const AppBar = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.selectLoggedIn);
 
   return (
     <header className={s.header}>

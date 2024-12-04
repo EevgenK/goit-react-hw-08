@@ -1,12 +1,13 @@
 import { Form, Formik } from "formik";
 import s from "./RegistrationForm.module.css";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
-import { useId } from "react";
+import { useId, useRef } from "react";
 import createContactSchema from "../../utils/validationSchema";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { CustomPasswordField, CustomTextField } from "../sharedMui";
 import { Button } from "@mui/material";
+import { useResetForm } from "../../utils/hooks/useResetForm";
 const initialValues = {
   name: "",
   email: "",
@@ -17,8 +18,10 @@ const RegistrationForm = () => {
   const passwordFieldId = useId();
   const emailFieldId = useId();
   const dispatch = useDispatch();
+  const actionsRef = useRef(null);
 
   const handleSubmit = ({ name, password, email }, actions) => {
+    actionsRef.current = actions;
     dispatch(
       register({
         name,
@@ -26,8 +29,8 @@ const RegistrationForm = () => {
         email,
       })
     );
-    actions.resetForm();
   };
+  useResetForm(actionsRef);
   return (
     <Formik
       initialValues={initialValues}

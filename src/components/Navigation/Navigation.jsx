@@ -5,7 +5,7 @@ import authSelectors from "../../redux/auth/selectors";
 import CabinIcon from "@mui/icons-material/Cabin";
 
 const Navigation = () => {
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.selectLoggedIn);
   return (
     <ul className={s.navigation}>
       <li>

@@ -25,7 +25,7 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(authSelectors.getIsRefreshing);
+  const isRefreshing = useSelector(authSelectors.selectRefreshing);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

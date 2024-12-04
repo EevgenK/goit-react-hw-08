@@ -1,13 +1,15 @@
 import { Form, Formik } from "formik";
-import { useId } from "react";
+import { useEffect, useId, useRef } from "react";
 import createContactSchema from "../../utils/validationSchema";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth/operations";
 import { Button } from "@mui/material";
 import { CustomPasswordField, CustomTextField } from "../sharedMui/index.js";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
 
 import s from "./LoginForm.module.css";
+import authSelectors from "../../redux/auth/selectors.js";
+import { useResetForm } from "../../utils/hooks/useResetForm.js";
 const initialValues = {
   email: "",
   password: "",
@@ -16,15 +18,25 @@ const LoginForm = () => {
   const emailFieldId = useId();
   const passwordFieldId = useId();
   const dispatch = useDispatch();
+  // const userName = useSelector(authSelectors.selectUserName);
+  const actionsRef = useRef(null);
   const handleSubmit = ({ email, password }, actions) => {
+    actionsRef.current = actions;
     dispatch(
       login({
         email,
         password,
       })
     );
-    actions.resetForm();
   };
+
+  useResetForm(actionsRef);
+  // useEffect(() => {
+  //   if (userName) {
+  //     console.log("effect from login");
+  //     actionsRef.current.resetForm();
+  //   }
+  // }, [userName]);
 
   return (
     <Formik

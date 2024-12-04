@@ -6,8 +6,8 @@ import { FormControlLabel, FormGroup, Switch } from "@mui/material";
 import { logout } from "../../redux/auth/operations";
 
 const UserMenu = () => {
-  const userName = useSelector(authSelectors.getUserName);
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const userName = useSelector(authSelectors.selectUserName);
+  const isLoggedIn = useSelector(authSelectors.selectLoggedIn);
   const dispatch = useDispatch();
   const handleChange = () => {
     dispatch(logout());

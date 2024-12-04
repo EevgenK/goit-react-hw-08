@@ -20,6 +20,19 @@ export const register = createAsyncThunk(
       setAuthHeader(result.data.token);
       return result.data;
     } catch (response) {
+      const { email } = response.response.data.keyValue;
+      switch (response.status) {
+        case 400:
+          toast.error(
+            `User with email "${email}" is already exist. Go to Login Page and try there, please!`
+          );
+          break;
+        case 500:
+          toast.error(`${response.message}. Try again later, please.`);
+          break;
+        default:
+          break;
+      }
       return rejectWithValue(response.message);
     }
   }
@@ -33,6 +46,9 @@ export const login = createAsyncThunk(
       setAuthHeader(result.data.token);
       return result.data;
     } catch (response) {
+      toast.error(
+        `${response.message}. Check your email and password please. `
+      );
       return rejectWithValue(response.message);
     }
   }
