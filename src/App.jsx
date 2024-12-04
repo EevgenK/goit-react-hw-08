@@ -18,6 +18,7 @@ const PrivateRoute = lazy(() =>
 const RestrictedRoute = lazy(() =>
   import("./components/RestrictedRoute/RestrictedRoute")
 );
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 
 import "modern-normalize";
 import "./App.css";
@@ -59,6 +60,7 @@ function App() {
               <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </Layout>

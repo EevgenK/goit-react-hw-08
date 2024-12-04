@@ -19,7 +19,6 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = ({ name, password, email }, actions) => {
-    console.log(name, "|", password, "|", email);
     dispatch(
       register({
         name,
