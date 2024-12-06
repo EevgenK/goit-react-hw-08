@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { selectFilteredContactsMemo } from "../../redux/contacts/selectors";
+import { selectFilteredSortedContactsMemo } from "../../redux/contacts/selectors";
 import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
 
 const ContactList = () => {
-  const items = useSelector(selectFilteredContactsMemo);
+  const items = useSelector(selectFilteredSortedContactsMemo);
   return (
     <ul className={s.list}>
       {items.map(({ id, name, number }) => (

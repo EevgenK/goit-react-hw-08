@@ -5,6 +5,7 @@ import {
   editContact,
   fetchContacts,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 const initialState = {
   items: [],
@@ -59,6 +60,9 @@ const slice = createSlice({
           (item) => item.id === action.payload.id
         );
         state.items.splice(idx, 1, action.payload);
+      })
+      .addCase(logout.fulfilled, (state) => {
+        Object.assign(state, initialState);
       });
   },
   reducers: {

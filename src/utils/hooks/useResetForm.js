@@ -1,13 +1,12 @@
 import { useSelector } from "react-redux";
-import authSelectors from "../../redux/auth/selectors";
+import { selectUser } from "../../redux/auth/selectors";
 import { useEffect } from "react";
 
 export const useResetForm = (ref) => {
-  const userName = useSelector(authSelectors.selectUserName);
+  const { name } = useSelector(selectUser);
   useEffect(() => {
-    if (userName) {
-      console.log("effect from login");
+    if (name) {
       ref.current.resetForm();
     }
-  }, [ref, userName]);
+  }, [ref, name]);
 };

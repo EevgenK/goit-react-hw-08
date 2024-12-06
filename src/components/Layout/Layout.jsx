@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
 
   const checkCurrentItemType = useCallback(() => {
     if (!currentItemType) return;
-    console.log("hello from L");
+
     switch (currentItemType.type) {
       case "edit":
         return <ChangeCard />;

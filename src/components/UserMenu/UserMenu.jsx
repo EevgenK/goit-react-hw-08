@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import s from "./UserMenu.module.css";
 import { BsPersonCheckFill } from "react-icons/bs";
-import authSelectors from "../../redux/auth/selectors";
-import { FormControlLabel, FormGroup, Switch } from "@mui/material";
+import { selectUser, selectIsLoggedIn } from "../../redux/auth/selectors";
+import { FormControlLabel, Switch } from "@mui/material";
 import { logout } from "../../redux/auth/operations";
 
 const UserMenu = () => {
-  const userName = useSelector(authSelectors.selectUserName);
-  const isLoggedIn = useSelector(authSelectors.selectLoggedIn);
+  const { name } = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const handleChange = () => {
     dispatch(logout());
@@ -17,7 +17,7 @@ const UserMenu = () => {
       <div className={s.wrap}>
         <BsPersonCheckFill className={s.icon} />
         <h5 className={s.greeting}>
-          Welcome, <span>{userName}</span>
+          Welcome, <span>{name}</span>
         </h5>
       </div>
 

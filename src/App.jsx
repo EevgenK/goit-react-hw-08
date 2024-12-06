@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "./redux/auth/operations";
-import authSelectors from "./redux/auth/selectors";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 import LoaderApi from "./components/LoaderApi/LoaderApi";
 import Layout from "./components/Layout/Layout";
 
@@ -25,7 +25,7 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(authSelectors.selectRefreshing);
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);

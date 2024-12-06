@@ -12,7 +12,7 @@ const clearAuthHeader = () => {
 };
 
 export const register = createAsyncThunk(
-  "auth/register ",
+  "auth/register",
   async (data, { rejectWithValue }) => {
     try {
       const result = await axios.post("/users/signup", data);
@@ -24,7 +24,9 @@ export const register = createAsyncThunk(
       switch (response.status) {
         case 400:
           toast.error(
-            `User with email "${email}" is already exist. Go to Login Page and try there, please!`
+            `User with  "${[
+              email,
+            ]}" is already exist. Go to Login Page and try there, please!`
           );
           break;
         case 500:
@@ -38,7 +40,7 @@ export const register = createAsyncThunk(
   }
 );
 export const login = createAsyncThunk(
-  "auth/login ",
+  "auth/login",
   async (data, { rejectWithValue }) => {
     try {
       const result = await axios.post("/users/login", data);
@@ -61,6 +63,7 @@ export const logout = createAsyncThunk(
       clearAuthHeader();
       toast.success("You`ve been successfully logged out");
     } catch (response) {
+      toast.error(`${response.message}. Try to reload the page, please`);
       return rejectWithValue(response.message);
     }
   }
@@ -69,12 +72,16 @@ export const refreshUser = createAsyncThunk(
   "auth/refresh",
   async (_, { getState, rejectWithValue }) => {
     const localUserToken = getState().auth.token;
-    if (!localUserToken) return rejectWithValue("no token");
+    if (!localUserToken) {
+      toast.error(`Use Login Page, please`);
+      return rejectWithValue("no token");
+    }
     setAuthHeader(localUserToken);
     try {
       const result = await axios.get("/users/current");
       return result.data;
     } catch (response) {
+      toast.error(`${response.message}. Use Login Page, please`);
       return rejectWithValue(response.message);
     }
   }
